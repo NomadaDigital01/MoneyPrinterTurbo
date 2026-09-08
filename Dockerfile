@@ -28,7 +28,7 @@ RUN set -u; \
         rm -rf /var/lib/apt/lists/*; \
     }; \
     install_system_dependencies() { \
-        apt-get update && \
+        apt-get update -o Acquire::Check-Valid-Until=false && \
         apt-get install -y --no-install-recommends git ffmpeg; \
     }; \
     retry_system_dependencies() { \
