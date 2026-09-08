@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        DOCKER_BUILD_MIRROR: default
+        DOCKER_BUILD_MIRROR: china
         PIP_USE_OFFICIAL: "1"
     container_name: "moneyprinterturbo-webui"
     command: [ "sh", "-c", "python3 -c \"import toml,os,shutil; shutil.copyfile('config.example.toml','config.toml') if not os.path.exists('config.toml') else None; c=toml.load(open('config.toml')); c['app']['pexels_api_keys']=[os.environ.get('PEXELS_API_KEY','')]; c['app']['video_source']='pexels'; toml.dump(c, open('config.toml','w'))\" && exec streamlit run ./webui/Main.py --server.address=0.0.0.0 --server.port=8501 --browser.serverAddress=127.0.0.1 --server.enableCORS=True --browser.gatherUsageStats=False --client.toolbarMode=minimal --logger.hideWelcomeMessage=True --server.showEmailPrompt=False" ]
@@ -39,7 +39,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        DOCKER_BUILD_MIRROR: default
+        DOCKER_BUILD_MIRROR: china
         PIP_USE_OFFICIAL: "1"
     container_name: "moneyprinterturbo-api"
     command: [ "sh", "-c", "python3 -c \"import toml,os,shutil; shutil.copyfile('config.example.toml','config.toml') if not os.path.exists('config.toml') else None; c=toml.load(open('config.toml')); c['app']['pexels_api_keys']=[os.environ.get('PEXELS_API_KEY','')]; c['app']['video_source']='pexels'; toml.dump(c, open('config.toml','w'))\" && exec python3 main.py" ]
