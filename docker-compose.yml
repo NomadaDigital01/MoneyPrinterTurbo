@@ -15,11 +15,11 @@ services:
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
       - traefik.http.routers.moneyprinterturbo-webui-http.entryPoints=http
       - traefik.http.routers.moneyprinterturbo-webui-http.middlewares=redirect-to-https
-      - "traefik.http.routers.moneyprinterturbo-webui-http.rule=Host(`moneyprinter.lab.nerdistan.com.ar`) && PathPrefix(`/`)"
+      - "traefik.http.routers.moneyprinterturbo-webui-http.rule=Host(`moneyprinter.nerdistan.com.ar`) && PathPrefix(`/`)"
       - traefik.http.routers.moneyprinterturbo-webui-http.service=moneyprinterturbo-webui-http
       - traefik.http.routers.moneyprinterturbo-webui-https.entryPoints=https
       - traefik.http.routers.moneyprinterturbo-webui-https.middlewares=gzip
-      - "traefik.http.routers.moneyprinterturbo-webui-https.rule=Host(`moneyprinter.lab.nerdistan.com.ar`) && PathPrefix(`/`)"
+      - "traefik.http.routers.moneyprinterturbo-webui-https.rule=Host(`moneyprinter.nerdistan.com.ar`) && PathPrefix(`/`)"
       - traefik.http.routers.moneyprinterturbo-webui-https.service=moneyprinterturbo-webui-https
       - traefik.http.routers.moneyprinterturbo-webui-https.tls.certresolver=letsencrypt
       - traefik.http.routers.moneyprinterturbo-webui-https.tls=true
@@ -29,7 +29,7 @@ services:
       - "caddy_0.handle_path.0_reverse_proxy={{upstreams 8501}}"
       - caddy_0.handle_path=/*
       - caddy_0.header=-Server
-      - caddy_0=https://moneyprinter.lab.nerdistan.com.ar
+      - caddy_0=https://moneyprinter.nerdistan.com.ar
       - caddy_ingress_network=coolify
   api:
     build:
